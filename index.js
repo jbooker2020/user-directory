@@ -1,3 +1,4 @@
+
 const button = document.querySelector('button.greeting')
 
 function changeText(ev) {
@@ -9,7 +10,8 @@ button.addEventListener('click', changeText)
 
 const second_button = document.querySelector('#heady')
 
-function changeheader() {
+// Calling a function as a variable must be created before it is ever used
+const changeheader = function() {
     const header = document.querySelector('h1')
     header.textContent = 'I do the dash and I pull off'
 }
