@@ -4,10 +4,10 @@ const form = document.querySelector('#userForm')
 // This function changes the h1 element to whatever a user types in the input box
 const handleSubmit = function(ev) {
     ev.preventDefault()
-    const heading = document.querySelector('h1')
+    const users = document.querySelector('#users')
     const f = ev.target
-    const username = f.userName.value
-    heading.textContent = username
+    const userName = f.userName.value
+    users.textContent += ' ' + userName
     
 }
 
