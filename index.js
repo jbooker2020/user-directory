@@ -1,44 +1,35 @@
-// This variable grabs the HTML Element with the h1 id  'userForm'
 const form = document.querySelector('#userForm')
 
-// This function changes the h1 element to whatever a user types in the input box
+
 const handleSubmit = function(ev) {
-    // Prevents the page from refreshing after names are inputted
+    // This chunk of code gets values out of the form
     ev.preventDefault()
-
-    // Grabs the div element with the id of 'users'
-    const users = document.querySelector('#users')
-
-    // creates a variable named f that stores the event target which is the form
     const f = ev.target
-
-    // Gets the value of the forms input value and stores it in a variable
-    // This only works if the input in the html has a name attribute (Ex:userYame) if it doesnt input will be undefined
     const username = f.userYame.value
-
     const Age = f.age.value
-
     const favoritecolor = f.favoriteColor.value
 
-    // This creates a paragraph element and stores it in a variable named p
-    const p = document.createElement('p')
-
-    // This sets the text content of the paragraph element to the usernane and age. It is still not on the page though
-    // You have to append it to something already in the DOM
-
-    p.textContent = `${username}, ${Age}`
-
-    p.style.backgroundColor = favoritecolor
-
-    // This appends the created paragraph element and attaches it to the div that is strored in the variable users
-    users.appendChild(p)
     
-    // Resets the input box to blank after a name has been entered
+    // This chunk of code creates list items
+    const nameItem = document.createElement('li')
+    nameItem.textContent = `Name: ${username}`
+    const ageItem = document.createElement('li')
+    ageItem.textContent = `Age ${Age}`
+
+    // This chunk of code builds the actual list
+    const list = document.createElement('ul')
+    list.appendChild(nameItem)
+    list.appendChild(ageItem)
+
+    // This chunk of code sticks the code on the page
+    const users = document.querySelector('#users')
+    users.appendChild(list)
+    
+    // This chunk of code resets the fieldss
     f.reset()
-    // Makes the cursor go to the first input box for the username
     f.userYame.focus()
     
 }
 
-// This allows the user to submit their input and have the handleSubmit function to perform
+
 form.addEventListener('submit', handleSubmit)
