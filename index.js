@@ -13,8 +13,14 @@ const handleSubmit = function(ev) {
     // This only works if the input in the html has a name attribute (Ex:userYame) if it doesnt input will be undefined
     const username = f.userYame.value
     const Age = f.age.value
-    // Use string interpolation to make code cleaner and more neats
-    users.innerHTML += `<p>${username}, ${Age}`
+    // This creates a paragraph element and stores it in a variable named p
+    const p = document.createElement('p')
+    // This sets the text content of the paragraph element to the usernane and age. It is still not on the page though
+    // You have to append it to something already in the DOM
+    p.textContent = `${username}, ${Age}`
+    // This appends the created paragraph element and attaches it to the div that is strored in the variable users
+    users.appendChild(p)
+    
     // Resets the input box to blank after a name has been entered
     f.reset()
     // Makes the cursor go to the first input box for the username
