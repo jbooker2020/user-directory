@@ -17,6 +17,8 @@ const handleSubmit = function(ev) {
     users.innerHTML += '<p>' + username +', ' + Age + '</p>' 
     // Resets the input box to blank after a name has been entered
     f.reset()
+    // Makes the cursor go to the first input box for the username
+    f.userYame.focus()
     
 }
 
