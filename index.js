@@ -10,7 +10,12 @@ const renderColor = function(color) {
 
 const renderListItem = function(label, value) {
     const item = document.createElement('li')
-    item.textContent = `${label}: ${value}`
+    item.textContent = `${label}: `
+    try {
+    item.appendChild(value)
+    } catch(e) {
+        item.textContent += value
+    }
     return item
 }
 
@@ -22,23 +27,10 @@ const handleSubmit = function(ev) {
     const Age = f.age.value
     const favoritecolor = f.favoriteColor.value    
 
-    // This chunk of code creates the color list items and appends the div to the list
-    const colorItem = document.createElement('li')
-    colorItem.textContent = 'Favorite Color: '
-    colorItem.appendChild(renderColor(favoritecolor))
-    
-    // This chunk of code builds the actual list
-    const renderList = function() {
-        const list = document.createElement('ul')
-        return list
-   
-    }
-
-    list = renderList()
-
+    const list = document.createElement('ul')
     list.appendChild(renderListItem('Name', username))
     list.appendChild(renderListItem('Age', Age))
-    list.appendChild(colorItem)
+    list.appendChild(renderListItem('Favorite Color', renderColor(favoritecolor)))
     
     
 
