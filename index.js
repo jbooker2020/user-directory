@@ -16,8 +16,7 @@ const handleSubmit = function(ev) {
     // Change textContent method to innerHTML in order to use html elements in javascript work space
     users.innerHTML += '<p>' + username +', ' + Age + '</p>' 
     // Resets the input box to blank after a name has been entered
-    f.userName.value = ''
-    f.age.value = ''
+    f.reset()
     
 }
 
