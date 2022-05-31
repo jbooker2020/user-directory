@@ -12,10 +12,12 @@ const handleSubmit = function(ev) {
     // Gets the value of the forms input value and stores it in a variable
     // This only works if the input in the html has a name attribute (Ex:userYame) if it doesnt input will be undefined
     const username = f.userYame.value
+    const Age = f.age.value
     // Change textContent method to innerHTML in order to use html elements in javascript work space
-    users.innerHTML += '<p>' + username + '</p>'
+    users.innerHTML += '<p>' + username +', ' + Age + '</p>' 
     // Resets the input box to blank after a name has been entered
     f.userName.value = ''
+    f.age.value = ''
     
 }
 
