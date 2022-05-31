@@ -13,8 +13,8 @@ const handleSubmit = function(ev) {
     // This only works if the input in the html has a name attribute (Ex:userYame) if it doesnt input will be undefined
     const username = f.userYame.value
     const Age = f.age.value
-    // Change textContent method to innerHTML in order to use html elements in javascript work space
-    users.innerHTML += '<p>' + username +', ' + Age + '</p>' 
+    // Use string interpolation to make code cleaner and more neats
+    users.innerHTML += `<p>${username}, ${Age}`
     // Resets the input box to blank after a name has been entered
     f.reset()
     // Makes the cursor go to the first input box for the username
