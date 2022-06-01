@@ -1,5 +1,5 @@
 const form = document.querySelector('#userForm')
-
+// This function creates a div name colorDiv that stores the color the use selected
 const renderColor = function(color) {
     const colorDiv = document.createElement('div')
     colorDiv.style.backgroundColor = color
@@ -8,6 +8,8 @@ const renderColor = function(color) {
     return colorDiv
 }
 
+// This function create the list items and uses a try catch statement to add elements that
+// cause error when ran 
 const renderListItem = function(label, value) {
     const item = document.createElement('li')
     item.textContent = `${label}: `
@@ -20,25 +22,36 @@ const renderListItem = function(label, value) {
 }
 
 const handleSubmit = function(ev) {
-    // This chunk of code gets values out of the form
+    
     ev.preventDefault()
     const f = ev.target
-    const username = f.userYame.value
-    const Age = f.age.value
-    const favoritecolor = f.favoriteColor.value    
+    // This creates an object name 'user' with the keys and values of the username, age and favorite color
+    const user = {
+        username: f.userYame.value,
+        Age: f.age.value,
+        favoritecolor: renderColor(f.favoriteColor.value),
+    }
+    
+       
 
     const list = document.createElement('ul')
-    list.appendChild(renderListItem('Name', username))
-    list.appendChild(renderListItem('Age', Age))
-    list.appendChild(renderListItem('Favorite Color', renderColor(favoritecolor)))
-    
-    
 
-    // This chunk of code sticks the code on the page
+    // This variable stores the keys for the user object
+    const labels = Object.keys(user)
+
+    // This loop loops through the labels variable and puts each label in the renderListIten function 
+    // and appends its to the list variable as a child
+    labels.forEach(function(label){
+      const item = renderListItem(label, user[label])
+      list.appendChild(item)
+    })
+   
+    
+    
     const users = document.querySelector('#users')
     users.appendChild(list)
     
-    // This chunk of code resets the fieldss
+    
     f.reset()
     f.userYame.focus()
     
