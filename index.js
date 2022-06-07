@@ -14,7 +14,7 @@ const renderListItem = function(label, value) {
     const item = document.createElement('li')
 
     const term = document.createElement('dt')
-    item.textContent = label
+    term.textContent = label
 
     const description = document.createElement('dd')
     try {
@@ -46,7 +46,7 @@ const handleSubmit = function(ev) {
     const f = ev.target
     // This creates an object name 'user' with the keys and values of the username, age and favorite color
     const user = {
-        username: f.userYame.value,
+        userjame: f.userYame.value,
         Age: f.age.value,
         favoritecolor: renderColor(f.favoriteColor.value),
     }
