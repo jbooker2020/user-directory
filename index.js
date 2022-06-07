@@ -14,11 +14,23 @@ const renderListItem = function(label, value) {
     const item = document.createElement('li')
     item.textContent = `${label}: `
     try {
-    item.appendChild(value)
+        item.appendChild(value)
     } catch(e) {
         item.textContent += value
     }
     return item
+}
+
+const renderList = function(data) {
+    const list = document.createElement('ul')
+    const labels = Object.keys(data)
+
+    labels.forEach(function(label){
+        const item = renderListItem(label, data[label])
+        list.appendChild(item)
+      })
+
+      return list
 }
 
 const handleSubmit = function(ev) {
@@ -32,24 +44,9 @@ const handleSubmit = function(ev) {
         favoritecolor: renderColor(f.favoriteColor.value),
     }
     
-       
-
-    const list = document.createElement('ul')
-
-    // This variable stores the keys for the user object
-    const labels = Object.keys(user)
-
-    // This loop loops through the labels variable and puts each label in the renderListIten function 
-    // and appends its to the list variable as a child
-    labels.forEach(function(label){
-      const item = renderListItem(label, user[label])
-      list.appendChild(item)
-    })
-   
-    
-    
+        
     const users = document.querySelector('#users')
-    users.appendChild(list)
+    users.appendChild(renderList(user))
     
     
     f.reset()
