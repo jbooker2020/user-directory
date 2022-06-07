@@ -12,17 +12,24 @@ const renderColor = function(color) {
 // cause error when ran 
 const renderListItem = function(label, value) {
     const item = document.createElement('li')
-    item.textContent = `${label}: `
+
+    const term = document.createElement('dt')
+    item.textContent = label
+
+    const description = document.createElement('dd')
     try {
-        item.appendChild(value)
+        description.appendChild(value)
     } catch(e) {
-        item.textContent += value
+        description.textContent += value
     }
+
+    item.appendChild(term)
+    item.appendChild(description)
     return item
 }
 
 const renderList = function(data) {
-    const list = document.createElement('ul')
+    const list = document.createElement('dl')
     const labels = Object.keys(data)
 
     labels.forEach((label)=>{
